@@ -29,7 +29,7 @@ app.post('/items', function (req, res) {
   // var studentName = req.body.firstName;
   // console.log(req.body);
   // save it into the database  
-  console.log("body", req.body );
+  // console.log("body", req.body );
   items.insert(function(err, data) {
     if(err) {
       res.sendStatus(500); 

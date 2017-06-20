@@ -4,7 +4,7 @@ import ListItem from './ListItem.jsx';
 const List = (props) => (
   <div id='studentNumber'>
    <br /> 
-   { typeof props.items === 'string' ? "There is 1 student." : "There are " + props.items.length + " students." } 
+   { props.items === 'Not Found' || props.items.length === 1 ? null : "There are " + props.items.length + " students." } 
     <div><br />
     </div>
       <tr>
@@ -19,3 +19,4 @@ const List = (props) => (
 export default List;
 
 
+ // There are { props.items.length } items.

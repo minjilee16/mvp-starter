@@ -93,15 +93,15 @@ class App extends React.Component {
     var data = this.state.items; 
     var hold = []; 
     for(var i = 0; i < data.length; i++ ) {
-      if ( searchName.toLowerCase() === data[i].name.toLowerCase() ) {
-        hold.push(searchName);
+      if ( searchName.toLowerCase() === data[i].first_name.toLowerCase() ) {
+        hold.push(data[i]);
       } 
     }
-
+    console.log('hold',hold)
     if(hold.length > 0 ) {
       hold.forEach( (name) => {
         this.setState({
-          items: name.toLowerCase()
+          items: hold
         })
       })
     } else {
@@ -118,7 +118,7 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Hack Reactor Student List</h1>
-      <h3>Add new Student </h3>
+      <h3>Add New Student </h3>
       <div id ="addBar">
 
       First Name: <input className ='info' value = { this.state.firstName }  onChange= { this.firstNameValue.bind(this) }  placeholder = {"type first name"}/><br />
@@ -128,11 +128,12 @@ class App extends React.Component {
       </div>
 
       <div id="serachBar">
-       <br /><h3> Search a student</h3> 
+       <br /><h3> Search a Student by First Name</h3> 
        <input className ='info' value = { this.state.searchName }  onChange= { this.changeSearchName.bind(this)} />
-       <button onClick= {this.findStudent.bind(this)} className ="AddButton"  >GO!</button> 
+       <button onClick= {this.findStudent.bind(this)} className ="AddButton" >GO!</button> 
        
       </div>
+      {console.log('hold', this.state.items)}
       <List items={this.state.items}/>
     </div>)
   }

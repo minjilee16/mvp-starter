@@ -11,17 +11,39 @@ class App extends React.Component {
     this.state = { 
       items: '',
       // item will be stored all students name 
-      studentName : '',
+      firstName : '',
+      lastName: '',
+      birthDate:'',
+      cohort:'',
       searchName: ''
     }
     this.getData(); 
   }
 
-  changeStudentValue (e) {
+  cohortValue (e) {
     this.setState({
-      studentName: e.target.value 
+      cohort: e.target.value 
     })
   }
+
+  birthDateValue (e) {
+    this.setState({
+      birthDate: e.target.value 
+    })
+  }
+
+  lastNameValue (e) {
+    this.setState({
+      lastName: e.target.value 
+    })
+  }
+
+  firstNameValue (e) {
+    this.setState({
+      firstName: e.target.value 
+    })
+  }
+
 
   changeSearchName (e) {
     this.setState({
@@ -35,7 +57,10 @@ class App extends React.Component {
       url: '/items', 
       type: 'POST', 
       contentType : 'application/json',
-      data:  JSON.stringify({ name: this.state.studentName }),
+      data:  JSON.stringify({ firstName: this.state.firstName,
+                              lastName: this.state.lastName,
+                              birthDate: this.state.birthDate,
+                              cohort: this.state.cohort }),
       success: (data) => {
         this.getData(); 
       },
@@ -44,7 +69,16 @@ class App extends React.Component {
       }
     });
     this.setState({
-      studentName: ""
+      firstName: ""
+    })
+    this.setState({
+      lastName: ""
+    })
+    this.setState({
+      birthDate: ""
+    })
+    this.setState({
+      cohort: ""
     })
   }
 
@@ -98,10 +132,10 @@ class App extends React.Component {
       <h1>Student List</h1>
       <h3>Add new Student </h3>
       <div id ="addBar">
-      First Name: <input value = { this.state.studentName}  onChange= { this.changeStudentValue.bind(this) } /><br />
-      <br />Last Name: <input value = { this.state.studentName}  onChange= { this.changeStudentValue.bind(this) } /><br />
-      <br /> Birth Date: <input value = { this.state.studentName }  onChange= { this.changeStudentValue.bind(this) } /><br />
-      <br /> Cohort: <input value = { this.state.studentName }  onChange= { this.changeStudentValue.bind(this) } /><br />
+      First Name: <input value = { this.state.firstName}  onChange= { this.firstNameValue.bind(this) } /><br />
+      <br />Last Name: <input value = { this.state.lastName }  onChange= { this.lastNameValue.bind(this) } /><br />
+      <br /> Birth Date: <input value = { this.state.birthDate }  onChange= { this.birthDateValue.bind(this) } /><br />
+      <br /> Cohort: <input value = { this.state.cohort }  onChange= { this.cohortValue.bind(this) } /><br />
 
       <br /><button onClick= {this.addStudentPostRequest.bind(this)} >Add</button>  
       </div>

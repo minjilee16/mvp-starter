@@ -26,14 +26,14 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.post('/items', function (req, res) {
   // grab the input value 
-  var studentName = req.body.name;
-
+  // var studentName = req.body.firstName;
+  // console.log(req.body);
   // save it into the database  
   items.insert(function(err, data) {
     if(err) {
       res.sendStatus(500); 
     } 
-  }, studentName);
+  }, req.body);
   res.send('YES it works!');
 })
 

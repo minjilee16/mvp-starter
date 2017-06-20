@@ -3,10 +3,16 @@ import ListItem from './ListItem.jsx';
 
 const List = (props) => (
   <div>
-    <h4> List Component </h4>
-    There are { props.items.length } items.
-    { props.items.map(item => <ListItem item={item}/>)}
+   <br /> 
+
+   { typeof props.items === 'string' ? "There is 1 student." : "There are " + props.items.length + " students." } 
+    <div><br />
+    <h2>Name</h2>
+    </div>
+    { typeof props.items === 'string' ? props.items : props.items.map( (item, key) => <ListItem item={item} key={key}/>)}
   </div>
 )
 
 export default List;
+
+

@@ -18,5 +18,3 @@ const List = (props) => (
 
 export default List;
 
-
- // There are { props.items.length } items.

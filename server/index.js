@@ -29,7 +29,6 @@ app.post('/items', function (req, res) {
   // var studentName = req.body.firstName;
   // console.log(req.body);
   // save it into the database  
-  // console.log("body", req.body );
   items.insert(function(err, data) {
     if(err) {
       res.sendStatus(500); 
@@ -38,6 +37,17 @@ app.post('/items', function (req, res) {
   res.send('YES it works!');
 })
 
+
+app.delete('/items', function (req, res) {
+  // console.log('REQ BODY SHOULD BE INPUT:',req.body.deleteName);
+  var inputValue = req.body.deleteName; 
+  items.deleteData(function(err, data) {
+    if(err) {
+      res.sendStatus(500); 
+    } 
+  }, inputValue );
+  res.send('processing');
+})
 
 
 app.get('/items', function (req, res) {

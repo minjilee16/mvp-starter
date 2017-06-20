@@ -13,7 +13,6 @@ class App extends React.Component {
       // item will be stored all students name 
       firstName : '',
       lastName: '',
-      birthDate:'',
       cohort:'',
       searchName: ''
     }
@@ -26,11 +25,6 @@ class App extends React.Component {
     })
   }
 
-  birthDateValue (e) {
-    this.setState({
-      birthDate: e.target.value 
-    })
-  }
 
   lastNameValue (e) {
     this.setState({
@@ -59,7 +53,6 @@ class App extends React.Component {
       contentType : 'application/json',
       data:  JSON.stringify({ firstName: this.state.firstName,
                               lastName: this.state.lastName,
-                              birthDate: this.state.birthDate,
                               cohort: this.state.cohort }),
       success: (data) => {
         this.getData(); 
@@ -73,9 +66,6 @@ class App extends React.Component {
     })
     this.setState({
       lastName: ""
-    })
-    this.setState({
-      birthDate: ""
     })
     this.setState({
       cohort: ""
@@ -100,7 +90,6 @@ class App extends React.Component {
 
   findStudent () {
     var searchName = this.state.searchName; 
-    console.log('DATA', this.state.items)
     var data = this.state.items; 
     var hold = []; 
     for(var i = 0; i < data.length; i++ ) {
@@ -124,27 +113,24 @@ class App extends React.Component {
       searchName: ""
     })
   }
-// create input Add bar 
-// create button 
+
 
   render () {
     return (<div>
-      <h1>Student List</h1>
+      <h1>Hack Reactor Student List</h1>
       <h3>Add new Student </h3>
       <div id ="addBar">
-      First Name: <input value = { this.state.firstName}  onChange= { this.firstNameValue.bind(this) } /><br />
-      <br />Last Name: <input value = { this.state.lastName }  onChange= { this.lastNameValue.bind(this) } /><br />
-      <br /> Birth Date: <input value = { this.state.birthDate }  onChange= { this.birthDateValue.bind(this) } /><br />
-      <br /> Cohort: <input value = { this.state.cohort }  onChange= { this.cohortValue.bind(this) } /><br />
 
-      <br /><button onClick= {this.addStudentPostRequest.bind(this)} >Add</button>  
+      First Name: <input className ='info' value = { this.state.firstName }  onChange= { this.firstNameValue.bind(this) }  placeholder = {"type first name"}/><br />
+      <br />Last Name: <input className ='info' value = { this.state.lastName }  onChange= { this.lastNameValue.bind(this) } placeholder = {"type last name"}/><br />
+      <br /> Cohort:   <input className ='info' value = { this.state.cohort }  onChange= { this.cohortValue.bind(this) } placeholder = {"type cohort number"}/><br />
+      <br /><button className ="AddButton" onClick= {this.addStudentPostRequest.bind(this)} >ADD NEW STUDENT</button>  
       </div>
 
-
       <div id="serachBar">
-       <br /><h3> Search a student name </h3> 
-       <input value = { this.state.searchName }  onChange= { this.changeSearchName.bind(this)} />
-       <button onClick= {this.findStudent.bind(this)} >Go!</button> 
+       <br /><h3> Search a student</h3> 
+       <input className ='info' value = { this.state.searchName }  onChange= { this.changeSearchName.bind(this)} />
+       <button onClick= {this.findStudent.bind(this)} className ="AddButton"  >GO!</button> 
        
       </div>
       <List items={this.state.items}/>

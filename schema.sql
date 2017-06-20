@@ -18,7 +18,6 @@ USE test;
 CREATE TABLE students (
   first_name VARCHAR(20),
   last_name VARCHAR(20),
-  birth_date DATE,
   cohort int NOT NULL
 );
 

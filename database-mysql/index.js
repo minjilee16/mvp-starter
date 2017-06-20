@@ -8,8 +8,8 @@ var connection = mysql.createConnection({
 });
 
 // declare insert function to add input value to test database 
-var insert = function (callback, studentName) {
-  connection.query(`insert into students (name) value ("${studentName}")`, function(err, results, fields) {
+var insert = function (callback, body) {
+  connection.query(`insert into students (first_name, last_name, cohort) values ("${body.firstName}" , "${body.lastName}", "${body.cohort}")`, function(err, results, fields) {
     if(err) {
       throw err;
     } 

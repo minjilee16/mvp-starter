@@ -2,9 +2,13 @@ import React from 'react';
 
 const ListItem = (props) => (
   <div>
-   <ul> 
-    <li> { props.item.name }</li>
-   </ul>
+ 
+   {console.log(props.item.first_name)}
+    <tr>
+      <td> { props.item.first_name }</td>
+      <td> { props.item.last_name }</td>
+      <td> { props.item.cohort }</td>
+    </tr>
   </div>
 )
 
